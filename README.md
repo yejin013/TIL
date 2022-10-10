@@ -1,5 +1,8 @@
 # Today I Learned (TIL)
 
+## GIT
+[git과 github](git/git+github.md)
+
 ### 자소서에 쓴 꼭 알아야 하는 내용들
 - [ ] MTV vs MVC 디자인 패턴
 - [ ] Spring Security
