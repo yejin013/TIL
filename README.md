@@ -5,7 +5,7 @@
 
 ## WEB
 * REST
-  * [REST란] (web/REST/REST란.md)
+  * [REST란](web/REST/REST란.md)
   
 ### 자소서에 쓴 꼭 알아야 하는 내용들
 - [ ] MTV vs MVC 디자인 패턴
