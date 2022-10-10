@@ -1,6 +1,6 @@
 > REST란, "Representational State Transfer"라는 용어의 약자로 자원을 이름으로 구분하여 해당 자원의 상태를 주고받는 모든 것을 의미. HTTP URI(Uniform Resource Identifier)를 통해 자원(Resource)을 명시하고, HTTP Method(POST, GET, PUT, DELETE)를 통해 해당 자원(URI)에 대한 CRUD Operation을 적용하는 것.
 
-REST 인터페이스 원칙
+# REST 인터페이스 원칙
 
 1.  자원의 식별 : 요청 내에 기술된 개별 자원을 식별할 수 있어야 한다. ex. URI
 2.  메시지를 통한 리소스 조작 : 클라이언트가 어떤 자원을 지칭하는 메시지와 특정 메타데이터만 가지고 있다면 이것으로 서버 상의 해당 자원을 변경하고 삭제할 수 있는 충분한 정보를 가지고 있는 것이다. 
@@ -12,7 +12,7 @@ REST 인터페이스 원칙
 > \- 행위 Verb : HTTP Method  
 > \- 행위에 대한 표현 Representations : HTTP Message Pay Load
 
-REST 특징
+# REST 특징
 
 -   Uniform (유니폼 인터페이스) : URI로 지정한 리소스에 대한 조작을 통일되고 한정적인 인터페이스로 수행하는 아키텍처 스타일
 -   Stateless (무상태성) : 작업을 위한 상태정보를 따로 저장하고 관리하지 않는다. 세션 정보나 쿠키 정보를 별도로 저장하고 관리하지 않아, API 서버는 들어오는 요청만을 단순히 처리하면 된다.
