@@ -1,6 +1,6 @@
 # MVC (Model-View-Controller)
 
-![MVC process](img/MVC-Process.svg)
+![MVC process](https://github.com/yejin013/TIL/blob/6d8281bb0307e89541043a75a1d495a6df92c9d6/img/MVC-Process.svg)
 
 - 사용자 인터페이스, 데이터 및 논리 제어를 구현하는데 사용되는 소프트웨어 디자인 패턴
     - 디자인 패턴이란, 각 모듈의 세분화된 역할이나 모듈들 간의 인터페이스와 같은 코드를 작성하는 수준의 세부적인 구현 방안을. 설계할 때 참조할 수 있는 전형적인 해결 방식 또는 예제
@@ -23,7 +23,7 @@
 
 ## MVC - WEB에 동작하는 순서
 
-![MVC web process](img/Router-MVC-DB.svg)
+![MVC web process](https://github.com/yejin013/TIL/blob/6d8281bb0307e89541043a75a1d495a6df92c9d6/img/Router-MVC-DB.svg)
 
 1. 사용자가 웹사이트에 접속한다. (Uses)
 2. Controller는 사용자가 요청한 웹페이지를 서비스 하기 위해서 모델을 호출한다. (Manipulates)
