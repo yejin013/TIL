@@ -30,6 +30,7 @@
 3. Model은 데이터베이스나 파일과 같은 데이터 소스를 제어한 후에 그 결과를 리턴한다.
 4. Controller는 Model이 리턴한 결과를 View에 반영한다. (Updates)
 5. 데이터가 반영된 VIew는 사용자에게 보여진다. (Sees)
+
 \* 사용자가 입력을 담당하는 View를 통해 요청을 보내면 해당 요청을 Controller가 받고, Controller는 Model을 통해 데이터를 가져오고, 해당 데이터를 바탕으로 출력을 담당하는 View를 제어해서 사용자에게 전달한다.
 
 ## MVC 장점
