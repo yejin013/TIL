@@ -11,7 +11,10 @@
 * 디자인 패턴 
   * [MVC 디자인 패턴](web/DesignPattern/MVC.md)
   * [MTV 디자인 패턴](web/DesignPattern/MTV.md)
-  
+ 
+## 소프트웨어 개발 방법로
+* [TDD](소프트웨어개발방법론/TDD.md)
+
 ### 자소서에 쓴 꼭 알아야 하는 내용들
 - [ ] Spring Security
 - [ ] Seq2Seq (LSTM)
