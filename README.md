@@ -24,3 +24,4 @@
 - [ ] Spring Batch + Quartz
 - [ ] Servlet
 - [ ] WebRTC + OpenVidu
+- [ ] Kotlin
