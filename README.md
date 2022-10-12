@@ -24,4 +24,4 @@
 - [ ] Spring Batch + Quartz
 - [ ] Servlet
 - [ ] WebRTC + OpenVidu
-- [ ] Kotlin
+- [ ] Kotlin (O) - 문법 추가 설명 및 예시 코드
