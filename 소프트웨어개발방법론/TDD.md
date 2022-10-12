@@ -1,4 +1,4 @@
-**TDD**란, **Test Driven Development**의 약자로 ‘**테스트 주도 개발**’이라고 한다.
+# TDD (Test Driven Development) - 테스트 주도 개발
 
 -   반복 테스트를 이용한 소프트웨어 방법론으로, 작은 단위의 테스트 케이스를 작성하고 이를 통과하는 코드를 추가하는 단계를 반복하여 구현한다.
 -   실패하는 테스트 코드 작성이 우선되어야 한다.
@@ -7,7 +7,7 @@
     2.  테스트 케이스를 통과하는 코드 작성
     3.  작성한 코드 리팩토링
 
-[##_Image|kage@dedGPr/btrsxJRV53b/6KoDx2yQ7kdeKokhasSULk/img.png|CDM|1.3|{"originWidth":751,"originHeight":529,"style":"alignCenter","width":596,"height":428,"filename":"blob"}_##]
+<img src="https://user-images.githubusercontent.com/45252618/195365109-a867537d-a9e4-4fc2-9dde-29d109569edc.png">
 
 TDD 개발 방식의 장점
 
@@ -22,7 +22,7 @@ TDD 개발 방식의 단점
 
 대표적인 TDD Tool은 JUnit (Java 단위 테스트 프레임워크) 이다.
 
-짧게 직접 작성했었던 JUnit을 활용한 TDD 코드는 아래에서 확인할 수 있다.
+Kotlin으로 짧게 직접 작성했었던 JUnit을 활용한 TDD 코드는 아래에서 확인할 수 있다.
 
 ```
 class DeleteUserTest : BaseControllerTest() {
