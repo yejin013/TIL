@@ -12,13 +12,19 @@
   * [MVC 디자인 패턴](web/DesignPattern/MVC.md)
   * [MTV 디자인 패턴](web/DesignPattern/MTV.md)
 
-* Spring
-
-* Django
-
+* Java
 
 * Kotlin
   * [Kotlin란](web/Kotlin/Kotlin란.md)
+  
+* Spring
+
+
+* Python
+
+
+* Django
+
 
 * Node.js
 
