@@ -37,7 +37,6 @@
 - [ ] Seq2Seq (LSTM)
 - [ ] 싱글 모듈 vs 멀티 모듈 vs MSA
 - [ ] Spring, Spring Boot
-- [ ] QueryDSL
 - [ ] Spring Batch + Quartz
 - [ ] Servlet
 - [ ] WebRTC + OpenVidu
