@@ -1,7 +1,7 @@
 # MTV (Model-Template-View)
 Django 에서 사용한 디자인 패턴 
 
-![MTV](https://github.com/yejin013/TIL/blob/4a4bbf2da28ca2aa47a9a8a1616dc34e5588597c/img/MTV.png)
+<img src="https://user-images.githubusercontent.com/45252618/195736379-8e7832c3-354f-4bbe-86b8-47813fbb49c9.png">">
 
 - Model
     - 애플리케이션이 '무엇'을 할 것인지 정의한다.

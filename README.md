@@ -4,29 +4,30 @@
 * [git과 github](git/git+github.md)
 
 ## WEB
-* REST
+### REST
   * [REST란](web/REST/REST란.md)
   * [RESTful API](web/REST/RESTful+API.md)
   
-* 디자인 패턴 
+### 디자인 패턴 
   * [MVC 디자인 패턴](web/DesignPattern/MVC.md)
   * [MTV 디자인 패턴](web/DesignPattern/MTV.md)
 
-* Java
-
-* Kotlin
+### Java
+  * [Java란](web/Java/Java란.md)
+  
+### Kotlin
   * [Kotlin란](web/Kotlin/Kotlin란.md)
   
-* Spring
+### Spring
   * [QueryDSL란](web/spring/QueryDSL.md)
 
-* Python
+### Python
 
 
-* Django
+### Django
 
 
-* Node.js
+### Node.js
 
 
 ## 소프트웨어 개발 방법로
