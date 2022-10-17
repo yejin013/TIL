@@ -3,6 +3,16 @@
 ## GIT
 * [git과 github](git/git+github.md)
 
+## LANGUAGE
+### Java
+* [Java란](language/Java/Java/Java란.md)
+* [Servlet]
+
+### Kotlin
+* [Kotlin란](language/Kotlin/Kotlin/Kotlin란.md)
+
+### Python
+
 ## WEB
 ### REST
   * [REST란](web/REST/REST란.md)
@@ -12,17 +22,18 @@
   * [MVC 디자인 패턴](web/DesignPattern/MVC.md)
   * [MTV 디자인 패턴](web/DesignPattern/MTV.md)
 
-### Java
-  * [Java란](web/Java/Java란.md)
-  
-### Kotlin
-  * [Kotlin란](web/Kotlin/Kotlin란.md)
-  
+## 모듈 
+* [멀티 모듈]
+* [MSA]
+
 ### Spring
-  * [QueryDSL란](web/spring/QueryDSL.md)
-
-### Python
-
+* [Spring이란](web/spring/Spring.md)
+* [SpringBoot란](web/spring/SpringBoot.md)
+* [AOP란](web/spring/AOP.md)
+* [QueryDSL란](web/spring/QueryDSL.md)
+* [Spring Security]
+* [Spring Batch + Quartz]
+* [WebRTC + Openvidu]
 
 ### Django
 
@@ -33,12 +44,8 @@
 ## 소프트웨어 개발 방법로
 * [TDD](소프트웨어개발방법론/TDD.md)
 
-### 자소서에 쓴 꼭 알아야 하는 내용들
-- [ ] Spring Security
-- [ ] Seq2Seq (LSTM)
-- [ ] 싱글 모듈 vs 멀티 모듈 vs MSA
-- [ ] Spring, Spring Boot
-- [ ] Spring Batch + Quartz
-- [ ] Servlet
-- [ ] WebRTC + OpenVidu
-- [ ] Kotlin (O) - 문법 추가 설명 및 예시 코드
+## 빅데이터 
+
+## 머신러닝 
+* [LSTM]
+* [Seq2Seq]
