@@ -30,6 +30,7 @@
 * [Spring이란](web/spring/Spring.md)
 * [SpringBoot란](web/spring/SpringBoot.md)
 * [AOP란](web/spring/AOP.md)
+* [JPA란](web/spring/JPA란.md)
 * [QueryDSL란](web/spring/QueryDSL.md)
 * [Spring Security]
 * [Spring Batch + Quartz]
