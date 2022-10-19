@@ -22,7 +22,7 @@
 
 ## Spring Batch Architecture
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/eb1383f7-3027-44a8-ab40-b6c018bf8ea3/Untitled.png)
+<img src="https://user-images.githubusercontent.com/45252618/196648764-66af5002-3a05-40e7-bf26-576303c3e4a8.png">
 
 - Application
     - 스프링 배치를 사용하는 개발자가 만드는 모든 배치 job과 커스텀 코드
@@ -34,7 +34,7 @@
 
 ### Spring Batch 용어
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b3e10173-adf7-48b7-bf02-f76f2290856f/Untitled.png)
+<img src="https://user-images.githubusercontent.com/45252618/196648851-076d93b3-0a67-4b92-9abf-1eaf5d926b5f.png">
 
 - **JobRepository**
     - 다양한 배치 수행과 관련된 수치 데이터와 잡의 상태를 유지 및 관리
