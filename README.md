@@ -33,7 +33,8 @@
 * [JPA란](web/spring/JPA란.md)
 * [QueryDSL란](web/spring/QueryDSL.md)
 * [Spring Security]
-* [Spring Batch + Quartz]
+* [Spring Batch](web/spring/Spring+Batch.md)
+* [Quartz]
 * [WebRTC + Openvidu]
 
 ### Django
