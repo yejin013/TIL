@@ -81,6 +81,12 @@
 
 ## 실제 적용 예시 (ODDOK 프로젝트)
 
+build.gradle
+```
+implementation 'org.springframework.boot:spring-boot-starter-batch'
+```
+
+BatchConfig.java
 ```java
 @Configuration
 @EnableBatchProcessing

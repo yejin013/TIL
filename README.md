@@ -5,17 +5,17 @@
 
 ## LANGUAGE
 ### Java
-* [Java란](language/Java/Java/Java란.md)
+* [Java](language/Java/Java/Java란.md)
 * [Servlet]
 
 ### Kotlin
-* [Kotlin란](language/Kotlin/Kotlin/Kotlin란.md)
+* [Kotlin](language/Kotlin/Kotlin/Kotlin란.md)
 
 ### Python
 
 ## WEB
 ### REST
-  * [REST란](web/REST/REST란.md)
+  * [REST](web/REST/REST란.md)
   * [RESTful API](web/REST/RESTful+API.md)
   
 ### 디자인 패턴 
@@ -27,15 +27,15 @@
 * [MSA]
 
 ### Spring
-* [Spring이란](web/spring/Spring.md)
-* [SpringBoot란](web/spring/SpringBoot.md)
-* [AOP란](web/spring/AOP.md)
-* [JPA란](web/spring/JPA란.md)
-* [QueryDSL란](web/spring/QueryDSL.md)
+* [Spring](web/spring/Spring.md)
+* [SpringBoot](web/spring/SpringBoot.md)
+* [AOP](web/spring/AOP.md)
+* [JPA](web/spring/JPA란.md)
+* [QueryDSL](web/spring/QueryDSL.md)
 * [Spring Security]
 * [Spring Batch](web/spring/Spring+Batch.md)
-* [Quartz]
-* [WebRTC + Openvidu]
+* [WebRTC](web/spring/WebRTC.md)
+* [OpenVidu]
 
 ### Django
 
