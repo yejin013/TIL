@@ -35,6 +35,7 @@
 * [QueryDSL](web/spring/QueryDSL.md)
 * [Spring Security]
 * [Spring Batch](web/spring/Spring+Batch.md)
+* [Cron](web/spring/Cron.md)
 * [WebRTC](web/spring/WebRTC.md)
 * [OpenVidu]
 
