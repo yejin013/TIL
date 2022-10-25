@@ -6,7 +6,7 @@
 ## LANGUAGE
 ### Java
 * [Java](language/Java/Java란.md)
-* [SOLID 원칙](language/Java/SOLIDmd)
+* [SOLID 원칙](language/Java/SOLID.md)
 * [Servlet]
 
 ### Kotlin
