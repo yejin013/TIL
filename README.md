@@ -15,6 +15,8 @@
 ### Python
 
 ## WEB
+* [웹 주요 취약점](web/웹+취약점.md)
+
 ### REST
   * [REST](web/REST/REST란.md)
   * [RESTful API](web/REST/RESTful+API.md)
