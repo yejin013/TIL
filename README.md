@@ -57,6 +57,12 @@
 * [UDP](network/udp.md)
 * [3 way handshake & 4 way handshake](network/3wayhandshake+4wayhandshake.md)
 * [암호기법](network/암호기법.md)
+
+## 운영체제
+
+## 데이터베이스 
+* [인덱싱](database/Indexing.md)
+
 ## 빅데이터 
 
 ## 머신러닝 
