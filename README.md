@@ -60,6 +60,9 @@
 * [암호기법](network/암호기법.md)
 
 ## 운영체제
+* [Transaction](operatingsystem/Transaction.md)
+* [병행제어](operatingsystem/병행제어.md)
+* [Lock과 Deadlock](operatingsystem/Lock+Deadlock.md)
 
 ## 데이터베이스 
 * [인덱싱](database/Indexing.md)
