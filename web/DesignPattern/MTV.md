@@ -1,5 +1,5 @@
 # MTV (Model-Template-View)
-Django 에서 사용한 디자인 패턴 
+> Django 에서 사용한 디자인 패턴 
 
 <img src="https://user-images.githubusercontent.com/45252618/195736379-8e7832c3-354f-4bbe-86b8-47813fbb49c9.png">">
 

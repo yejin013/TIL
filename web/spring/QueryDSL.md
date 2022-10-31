@@ -1,6 +1,5 @@
 # QueryDSL
-
-QueryDSL란, HQL (Hibernate Query Language) 쿼리를 타입에 안전하게 생성 및 관리할 수 있는 프레임워크이다. 쉽게 말하면 쿼리를 작성할 수 있게 해주는 프레임워크라고 생각하면 된다.
+> QueryDSL란, HQL (Hibernate Query Language) 쿼리를 타입에 안전하게 생성 및 관리할 수 있는 프레임워크이다. 쉽게 말하면 쿼리를 작성할 수 있게 해주는 프레임워크라고 생각하면 된다.
 
 ## QueryDSL 장점
 - 동적 쿼리 (QueryDSL의 가장 큰 장점)
