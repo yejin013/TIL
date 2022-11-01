@@ -59,6 +59,8 @@
 * [3 way handshake & 4 way handshake](network/3wayhandshake+4wayhandshake.md)
 * [암호기법](network/암호기법.md)
 * [TCP/IP 4계층](network/TCPIP+4계층.md)
+* [웹의 동작 원리](network/웹의+동작+원리.md)
+
 ## 운영체제
 * [Transaction](operatingsystem/Transaction.md)
 * [병행제어](operatingsystem/병행제어.md)
