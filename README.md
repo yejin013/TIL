@@ -15,7 +15,9 @@
 ### Python
 
 ## WEB
-* [웹 주요 취약점](web/웹+취약점.md)
+### security
+* [웹 주요 취약점](web/security/웹+취약점.md)
+* [CSRF](web/security/CSRF.md)
 
 ### REST
   * [REST](web/REST/REST란.md)
@@ -32,10 +34,13 @@
 ### Spring
 * [Spring](web/spring/Spring.md)
 * [SpringBoot](web/spring/SpringBoot.md)
-* [AOP](web/spring/AOP.md)
+* [AOP](web/spring/AOP.md) 
+* [IoC/DI](web/spring/IoC+DI.md) 
+* [빈 스코프](web/spring/빈+스코프.md)
 * [JPA](web/spring/JPA란.md)
 * [QueryDSL](web/spring/QueryDSL.md)
 * [Spring Security]
+* [JWT](web/spring/JWT.md)  
 * [Spring Batch](web/spring/Spring+Batch.md)
 * [Cron](web/spring/Cron.md)
 * [JUnit](web/spring/JUnit.md)
