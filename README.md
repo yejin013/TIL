@@ -46,7 +46,7 @@
 * [JUnit](web/spring/JUnit.md)
 * [Mockito](web/spring/Mockito.md)
 * [WebRTC](web/spring/WebRTC.md)
-* [OpenVidu]
+* [OpenVidu](web/spring/OpenVidu.md)
 
 ### Django
 
@@ -77,5 +77,4 @@
 ## 빅데이터 
 
 ## 머신러닝 
-* [LSTM]
-* [Seq2Seq]
+* [Seq2Seq](machinelearning/Seq2Seq.md)
