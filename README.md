@@ -18,6 +18,7 @@
 ### security
 * [웹 주요 취약점](web/security/웹+취약점.md)
 * [CSRF](web/security/CSRF.md)
+* [CORS](web/security/CORS.md)
 
 ### REST
   * [REST](web/REST/REST란.md)
@@ -39,7 +40,7 @@
 * [빈 스코프](web/spring/빈+스코프.md)
 * [JPA](web/spring/JPA란.md)
 * [QueryDSL](web/spring/QueryDSL.md)
-* [Spring Security]
+* [Spring Security](web/spring/Spring Security.md)
 * [JWT](web/spring/JWT.md)  
 * [Spring Batch](web/spring/Spring+Batch.md)
 * [Cron](web/spring/Cron.md)
