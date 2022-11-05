@@ -18,6 +18,13 @@
     2. 특정한 시점에 스케쥴러를 통해 자동화된 작업이 필요한 경우 (ex. 푸시알림, 월 별 리포트)
     3. 대용량 데이터의 포맷을 변경, 유효성 검사 등의 작업을 트랜잭션 안에서 처리 후 기록해야하는 경우
 
+## Spring Batch 조건
+- 주된 목적이자 조건 - 대용량. 데이터 처리
+- 자동화 : 사용자 개입 없이 실행
+- 견고성 : 데이터 충돌/중단 없이 처리
+- 신뢰성 : 무엇이 잘못되었는지 추적 필요 (로깅, 알림)
+- 성능 : 지정한 시간 안에 처리 완료, 다른 애플리케이션 방해 X
+
 ## Spring Batch Architecture
 
 <img src="https://user-images.githubusercontent.com/45252618/196648764-66af5002-3a05-40e7-bf26-576303c3e4a8.png">
@@ -44,10 +51,15 @@
     - Job.execute을 호출하는 역할
     - Job의 재실행 가능 여부 검증, 잡의 실행 방법, 파라미터 유효성 검증 등 수행
 - **Job**
+    - Job 이름을 정의
+    - Step을 정의하고 순서르 정의
+    - Jobㅇ 재사용 가능성 정의
     - 배치처리 과정을 하나의 단위로 만들어 놓은 객체
     - 배치처리 과정에 있어 전체 계층 최상단에 위치
 - **JobInstance**
     - Job의 실행의 단위
+    - 논리적으로 Job 실행
+    - JobParameters를 이용하여 구분
     - Job을 실행시키게 되면 하나의 JobInstance 생성
     - 예를들어 1월 1일 실행, 1월 2일 실행을 하게 되면 각각의 JobInstance가 생성되며 1월 1일 실행한 JobInstance가 실패하여 다시 실행을 시키더라도 이 JobInstance는 1월 1일에 대한 데이터만 처리한다.
 - **JobParameters**
@@ -59,7 +71,7 @@
     - 1월 1일에 실행한 JobInstacne가 실패하여 재실행을 하여도 동일한 JobInstance를 실행시키지만 이 2번에 실행에 대한 JobExecution은 개별로 생긴다.
     - JobInstance 실행에 대한 상태, 시작시간,  종료시간, 생성시간 등의 정보를 담고 있다.
 - **Step**
-    - Job의 배치처리를 정의하고 순차적인 단계 캡슐화
+    - Job의 배치처리를 정의하고 독립적이고 순차적인 단계 캡슐화
     - Job은 최소한 1개 이상의 Step을 가져야 한다.
     - Job의 실제 일괄 처리를 제어하는 모든 정보가 들어있다.
 - **StepExecution**
@@ -69,13 +81,24 @@
     - JobExecution에 저장되는 정보 외에 read 수, write 수, commit 수, skip 수 등의 정보들도 저장이 됩니다.
 - **ExecutionContext**
     - ExecutionContext란 Job에서 데이터를 공유 할 수 있는 데이터 저장소입니다. Spring Batch에서 제공하느 ExecutionContext는 JobExecutionContext, StepExecutionContext 2가지 종류가 있으나 이 두가지는 지정되는 범위가 다릅니다. JobExecutionContext의 경우 Commit 시점에 저장되는 반면 StepExecutionContext는 실행 사이에 저장이 되게 됩니다. ExecutionContext를 통해 Step간 Data 공유가 가능하며 Job 실패시 ExecutionContext를 통한 마지막 실행 값을 재구성 할 수 있습니다.
+- **Item**
+    - 작업에 사용하는 데이터 
 - **ItemReader**
-    - ItemReader는 Step에서 Item을 읽어오는 인터페이스입니다. ItemReader에 대한 다양한 인터페이스가 존재하며 다양한 방법으로 Item을 읽어 올 수 있습니다.
+    - ItemReader는 Step에서 Item을 읽어오는 인터페이스
+    - ItemReader에 대한 다양한 인터페이스가 존재하며 다양한 방법으로 Item을 읽어 올 수 있다.
+    - Step에서 한 항목씩 검색한다.
+    - 모든 항목이 소진된 경우 NULL을 반환한다.
 - **ItemWriter**
-    - ItemWriter는 처리 된 Data를 Writer 할 때 사용한다. Writer는 처리 결과물에 따라 Insert가 될 수도 Update가 될 수도 Queue를 사용한다면 Send가 될 수도 있다. Writer 또한 Read와 동일하게 다양한 인터페이스가 존재한다. Writer는 기본적으로 Item을 Chunk로 묶어 처리하고 있습니다.
+    - 여러 출력 항목을 나타낸다.
+    - ItemWriter는 처리 된 Data를 Writer 할 때 사용한다. 
+    - Writer는 처리 결과물에 따라 Insert가 될 수도 Update가 될 수도 Queue를 사용한다면 Send가 될 수도 있다. 
+    - Writer 또한 Read와 동일하게 다양한 인터페이스가 존재한다. 
+    - Writer는 기본적으로 Item을 Chunk로 묶어 처리한다.
 - **ItemProcessor**
-    - Item Processor는 Reader에서 읽어온 Item을 데이터를 처리하는 역할을 하고 있다. Processor는 배치를 처리하는데 필수 요소는 아니며 Reader, Writer, Processor 처리를 분리하여 각각의 역할을 명확하게 구분하고 있습니다.
+    - Item Processor는 Reader에서 읽어온 Item을 데이터를 처리하는 역할
+    - Processor는 배치를 처리하는데 필수 요소는 아니며 Reader, Writer, Processor 처리를 분리하여 각각의 역할을 명확하게 구분하고 있다.
     
+프레임워크르 사용하면 JobLauncher, JobRepository 사용 안 해도 됨.
 
 ## 실제 적용 예시 (ODDOK 프로젝트)
 
