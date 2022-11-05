@@ -40,7 +40,7 @@
 * [빈 스코프](web/spring/빈+스코프.md)
 * [JPA](web/spring/JPA란.md)
 * [QueryDSL](web/spring/QueryDSL.md)
-* [Spring Security](web/spring/Spring Security.md)
+* [Spring Security](web/spring/Spring+Security.md)
 * [JWT](web/spring/JWT.md)  
 * [Spring Batch](web/spring/Spring+Batch.md)
 * [Cron](web/spring/Cron.md)
