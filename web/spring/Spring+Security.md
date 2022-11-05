@@ -34,3 +34,6 @@
 - UsernamePasswordAuthenticationFilter : ID/비밀번호 기반 Form 인증 요청 URL을 감시하여 사용자를 인증함
 - ExceptionTransiationFilter : 요청을 처리하는 중에 발생하는 예외 위임하거나 전달
 - FilterSecurityInterceptor: 접근 권한 확인을 위해 요청을 AccessDecisionManger로 위임. 이 필터가 실행된느 시점에는 사용자가 인증됐다고 판단
+
+
+참고자료: https://catsbi.oopy.io/c0a4f395-24b2-44e5-8eeb-275d19e2a536, https://youtu.be/aEk-7RjBKwQ
