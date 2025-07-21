@@ -41,3 +41,10 @@
 ## 예시
 - 물리적 에이전트 : 자율주행 자동차, 공장 현장의 로봇 조수 등
 - 소프트웨어 에이전트 : 챗봇, 가상 비서, 정보 검색 에이전트, 추천 시스템, 자동 거래 프로그램 등
+
+<br/>
+<br/>
+<br/>
+출처 
+- AI Agents: Evolution, Architecture, and Real-World Applications/Naveen Krishnan/March 2025
+- [huyenchip.com](https://huyenchip.com/2025/01/07/agents.html)
