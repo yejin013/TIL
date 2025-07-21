@@ -76,7 +76,10 @@
 ## 데이터베이스 
 * [인덱싱](database/Indexing.md)
 
-## 빅데이터 
-
 ## 머신러닝 
 * [Seq2Seq](machinelearning/Seq2Seq.md)
+
+## AI
+* [LLM](ai/LLM.md)
+* [AI Agent](ai/AI_Agent.md)
+
