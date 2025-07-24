@@ -42,4 +42,4 @@
 출처
 
 - REACT: SYNERGIZING REASONING AND ACTING INLANGUAGE MODELS/Department of Computer Science, Princeton University Google Research, Brain team
-- 
+- AI Agents: Evolution, Architecture, and Real-World Applications/Naveen Krishnan
