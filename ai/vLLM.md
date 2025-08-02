@@ -1,9 +1,14 @@
 # vLLM
 > vLLM이란, 대형 언어 모델(LLM) 추론 및 제공을 위해 특별히 설계된 고처리량 및 메모리 효율적인 라이브러리
+> LLM 추론(inference) 및 서빙(serving)을 쉽고 빠르게 도와주는 라이브러리
 
 ## 특징
 - PagedAttention: 기존 시퀀스 기반 Attention 방식 대신 페이지 기반의 유연한 메모리 할당 전략을 도입하여 배치 효율 극대화
+- 지속적인 배치: 들어오는 요청을 실시간으로 GPU에 투입하여, 토큰 생성 대기 시간 감소
 - 비동기 엔진 구조: 추론 요청을 효율적으로 처리하기 위한 비동기 처리 구조로 높은 처리량 유지
+- 서빙(Serving) 속도 좋음
+  * 서빙(Serving)이란, 학습된 LLM(언어모델)을 사용자 요청에 따라 실제로 실행(inference)하여 응답 생성하는 과정
+  * GPU 효율 + 병렬 처리 + 지연 최소화 기술로 최적화한 고속 서빙 엔진 제공
 
 <img width="1280" height="867" alt="image" src="https://github.com/user-attachments/assets/13e652fa-e4fa-4b1f-a9bb-29917c4abbfa" />
 
@@ -19,6 +24,18 @@
 - 전반적인 처리 효율을 개선하기 위해 여러 쿼리를 동시에 처리하는 데 사용되는 기법
 - 새로운 응답을 생성하는 대신 KV 캐시에 메모리를 저장하고 이전에 수행한 계산과 유사한 새 쿼리에 대한 바로가기를 만들 수 있음
 - vLLM을 사용하면 챗봇은 이 토큰 문자열('수도가 어디야')을 단기 메모리(KV 캐시)에 저장하고 번역 요청을 두 개 대신 하나만 보낼 수 있음
+### 기존 LLM 방식과의 차이
+| 항목                           | 기존 LLM KV 캐시 방식                 | vLLM (PagedAttention) 방식                    | 개선 효과                        |
+| ---------------------------- | ------------------------------- | ------------------------------------------- | ---------------------------- |
+| **메모리 할당 방식**                | 시퀀스마다 **연속된 큰 블록** 예약           | KV 캐시를 **작은 블록(페이지)** 단위로 나눔                | ➤ 메모리 단편화 해소, 사용률 증가         |
+| **동시 요청 처리**                 | 요청마다 독립된 메모리 할당 → **동시 처리량 낮음** | 요청 간 **페이지 재사용 및 할당 최적화**                   | ➤ 처리량(throughput) 10\~24배 향상 |
+| **메모리 낭비율**                  | 평균 60\~80% 낭비 (최대 길이 기준으로 할당됨)  | 낭비율 4% 이하 (필요한 만큼만 동적 할당)                   | ➤ GPU 자원 활용 극대화              |
+| **KV 캐시 공유**                 | 불가능 (각 요청 독립 저장)                | 가능 (프롬프트 구간 **공통 캐시 공유**)                   | ➤ 동일 프롬프트에 대한 응답 병렬 생성 효율↑   |
+| **프롬프트 재사용**                 | 동일 입력도 KV를 새로 저장                | 기존 블록을 **복수 요청이 가리킴 (page table)**          | ➤ 메모리 절감 + 응답 생성 가속화         |
+| **KV 캐시 업데이트**               | 시퀀스 길이 늘어나면 **전체 재할당**          | 새 블록만 **동적으로 추가**                           | ➤ 처리 안정성 ↑, 중단 없는 확장         |
+| **메모리 주소 관리**                | 단순 배열 인덱스                       | **논리-물리 매핑 테이블 (page table)**               | ➤ 유연한 블록 재배치 및 확장성 ↑         |
+| **복수 응답 생성 (beam search 등)** | 응답 수만큼 메모리 **선형 증가**            | **공통 부분은 공유, 분기 시 복사 (copy-on-write)**      | ➤ 메모리 사용량 최대 55% 감소          |
+| **지연 시간(latency)**           | 배치 형성 대기 → **지연 발생**            | **연속 배칭(continuous batching)**으로 실시간 처리 | ➤ 응답 속도 개선 (특히 중/고 부하 상황)    |
 
 ## 장점
 - 최첨단 성능: vLLM은 많은 기준 구현에 비해 상당히 높은 처리량 제공
@@ -38,10 +55,40 @@
 - 추측 디코딩(Speculative Decoding)으로 작은 모델을 사용하여 토큰을 예측하고 더 방대한 모델을 사용하여 해당 예측을 검증하는 방식으로 텍스트 생성 속도 향상
 - 플래시 어텐션(Flash Attention)으로 트랜스포머 모델의 효율성 개선
 
+## vLLM 설치 및 실행 전 요구사항
+- 운영 체제: 리눅스
+- Python 버전: 3.9, 3.10, 3.11 또는 3.12
+- NVIDIA GPU 및 CUDA: 최적의 성능과 핵심 기능에 접근하기 위해서는 PyTorch가 지원하는 계산 능력을 가진 NVIDIA GPU가 필요하며 필요한 CUDA 툴킷 설치 필요
+- PyTorch: 설치 과정에서 일반적으로 호환되는 버전을 자동으로 설치하지만 문제가 발생하면 CUDA 버전과 호환되는 작업 중인 PyTorch 설치 필요
+| 항목         | 최소 요구                        | 권장                                  |
+| ---------- | ---------------------------- | ----------------------------------- |
+| **GPU**    | 24GB 이상 (예: A10, RTX 3090)   | **A100 40GB / L40S / H100 / 2개 이상** |
+| **CUDA**   | 11.6 이상                      | 12.x 이상                             |
+| **Driver** | 510 이상                       | 최신 NVIDIA driver 권장                 |
+| **CPU**    | 최소 4코어                       | **8\~16코어 이상 (멀티 스레드 배칭 처리에 도움)**   |
+| **RAM**    | 최소 16GB                      | **32GB 이상**                         |
+| **디스크**    | 모델 다운로드/변환용으로 50\~100GB      | NVMe SSD 필수                         |
+| **OS**     | Ubuntu 20.04 이상 or Docker 환경 | Docker strongly recommended         |
+
+## vLLM 설치 가이드
+[pip 사용]
+python -m venv vllm-env
+source vllm-env/bin/activate
+pip install vllm
+
+[conda 사용]
+conda create -n vllm-env python=3.11 -y # 또는 3.9, 3.10, 3.12 사용
+conda activate vllm-env
+pip install vllm
+
 <br/>
 <br/>
 <br/>
 출처
+- https://huggingface.co/docs/trl/main/vllm_integration
 - https://apidog.com/kr/blog/vllm-kr/
 - [https://ariz1623.tistory.com/375](https://blog.vllm.ai/2024/09/05/perf-update.html?utm_source=chatgpt.com#appendix)
 - https://www.redhat.com/ko/topics/ai/what-is-vllm
+- https://tristanchoi.tistory.com/651
+- https://arxiv.org/pdf/2309.06180
+- https://www.msap.ai/blog-home/blog/what-is-vllm/
