@@ -85,6 +85,7 @@ pip install vllm
 <br/>
 <br/>
 출처
+
 - https://huggingface.co/docs/trl/main/vllm_integration
 - https://apidog.com/kr/blog/vllm-kr/
 - [https://ariz1623.tistory.com/375](https://blog.vllm.ai/2024/09/05/perf-update.html?utm_source=chatgpt.com#appendix)
