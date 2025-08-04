@@ -1,0 +1,38 @@
+# Jenkins vs Github Actions
+
+## Jenkins 
+> Jenkins란, 오픈소스 기반의 자동화 서버
+- 자체 호스팅형: 사용자가 직접 서버에 설치 및 운영
+- 자유도 높은 스크립트 기반 파이프라인(Jenkinsfile) 작성 가능
+- Self-hosted 환경에 적합 (보안 및 네트워크 제약 시)
+- 서버 직접 관리 필요 (업데이트, 보안, 유지보수 등)
+- 러너 관리와 플러그인 충돌 문제 등 운영 부담
+- 초기 설정이 복잡하고 학습 곡선 있음
+
+## Github Actions
+> Github Actions란, GitHub에서 제공하는 CI/CD tjqltm
+- GitHub에 내장된 CI/CD 도구
+- GitHub에 종속적 (GitHub 외 저장소와 통합은 제약)
+- .github/workflows/*.yml 파일로 설정
+- 코드 푸시, PR, 이슈 등 GitHub 이벤트 기반으로 트리거
+- 클라우드 기반, GitHub가 인프라 제공
+- 커스터마이징 수준이 Jenkins에 비해 낮음
+
+## Jenkins vs Github Actions
+| 구분          | **Jenkins**               | **GitHub Actions**              |
+| ----------- | ------------------------- | ------------------------------- |
+| **설치**      | 직접 서버에 설치 필요              | GitHub에 내장됨 (별도 설치 X)           |
+| **운영 비용**   | 자체 서버/인프라 필요              | GitHub에서 제공 (무료/유료 tier)        |
+| **확장성**     | 플러그인으로 무제한 확장             | GitHub 서비스 내에서 동작 (제한적 확장)      |
+| **유연성**     | 커스터마이징 가능                 | GitHub 생태계에 맞춤화                 |
+| **러너(실행기)** | 직접 관리 (노드 추가 가능)          | GitHub Hosted 또는 Self-hosted 선택 |
+| **학습 난이도**  | 비교적 높음 (Groovy 등 스크립트 필요) | 비교적 쉬움 (YAML 기반 설정)             |
+
+<br/>
+<br/>
+<br/>
+출처
+
+- https://blog.bitsrc.io/github-actions-or-jenkins-making-the-right-choice-for-you-9ac774684c8
+- https://www.jenkins.io/doc/
+- https://docs.github.com/ko/actions
