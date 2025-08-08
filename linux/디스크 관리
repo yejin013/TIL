@@ -1,0 +1,87 @@
+# Linux - 디스크 확장 (VirtualBox GUI + Rocky Linux LVM)
+
+## 1. 개요
+VirtualBox GUI에서 VDI 크기를 늘리고, Rocky Linux 내부에서 LVM 파티션 및 파일시스템을 확장하는 절차.
+
+---
+
+## 2. 절차
+
+### 2.1 VM 전원 끄기
+- Rocky Linux VM을 **완전히 종료** (절전/저장 상태 X)
+
+---
+
+### 2.2 VirtualBox에서 디스크 크기 늘리기
+1. VirtualBox 메인 화면에서 VM 선택
+2. **설정 → 저장소**
+3. 확장하려는 **가상 하드디스크 선택 → 속성** 클릭
+4. **크기 슬라이더**를 원하는 용량으로 조정
+5. **OK** 클릭
+
+> 💡 이 단계는 **가상 디스크의 최대 크기(virtual size)**만 늘림  
+> OS 내부 파티션은 자동 확장되지 않음
+
+---
+
+### 2.3 Rocky Linux 부팅 후 새 공간 확인
+```bash
+lsblk
+````
+
+* `/dev/sda`의 전체 크기는 늘어났지만, 기존 파티션 크기는 그대로
+
+---
+
+### 2.4 LVM 파티션 확장
+
+```bash
+# 물리 볼륨 확장
+sudo pvresize /dev/sda2
+
+# 논리 볼륨 확인
+sudo lvdisplay
+
+# 루트 볼륨 전체 확장
+sudo lvextend -l +100%FREE /dev/rl/root
+```
+
+---
+
+### 2.5 파일시스템 확장
+
+```bash
+# XFS 파일시스템
+sudo xfs_growfs /
+
+# EXT4 파일시스템 (XFS가 아닌 경우)
+# sudo resize2fs /dev/rl/root
+```
+
+---
+
+### 2.6 확장 결과 확인
+
+```bash
+df -h
+```
+
+* `/` (root) 파티션 용량 증가 확인
+
+---
+
+## 3. 요약 순서
+
+1. **VM 종료**
+2. **VirtualBox GUI에서 저장소 크기 조정**
+3. **Rocky Linux 부팅 후 `lsblk`로 새 공간 확인**
+4. **`pvresize` → `lvextend` → `xfs_growfs`**
+5. **`df -h`로 결과 확인**
+
+---
+
+## 4. 참고
+
+* 비-LVM 환경이면 `fdisk` 또는 `parted`로 파티션 재설정 후 `resize2fs` 실행
+* 크기는 줄일 수 없으며, 늘리기만 가능
+* 가상 디스크 크기는 실제 데이터 크기보다 항상 커야 함
