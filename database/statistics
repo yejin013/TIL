@@ -1,0 +1,19 @@
+# 통계정보
+
+### 문제 발생 원인
+통계정보 유무에 따라 plan을 다르게 탐
+ex)
+|예시1|예시2|
+|---|---|
+|SELECT STATE Optimizer=FIRST_ROWS|SELECT STATE Optimizer=FIRST_ROWS|
+| VIEW| VIEW|
+|   COUNT|   COUNT|
+|     NESTED LOOPS|     NESTED LOOPS|
+|       NESTED LOOPS|       NESTED LOOPS|
+|         NESTED LOOPS|         NESTED LOOPS|
+|          TABLE ACCESS (BY INDEX ROWID) OF 'A' (TABLE)|          TABLE ACCESS (BY INDEX ROWID) OF 'A' (TABLE)|
+|             INDEX (UNIQUE SCAN) OF 'A_PK' (INDEX (UNIQUE))|             INDEX (UNIQUE SCAN) OF 'A_PK' (INDEX (UNIQUE))|
+|          TABLE ACCESS (BY INDEX ROWID) OF 'B' (TABLE)|          TABLE ACCESS (BY INDEX ROWID) OF 'C' (TABLE)|
+|            INDEX (UNIQUE SCAN) OF 'B_PK' (INDEX (UNIQUE))|            INDEX (RANGE SCAN) OF 'C_PK' (INDEX (UNIQUE))|
+|        INDEX (RANGE SCAN) OF 'C_PK' (INDEX (UNIQUE))|        INDEX (UNIQUE SCAN) OF 'B_IDX' (INDEX (UNIQUE))|
+|       TABLE ACCESS (BY INDEX ROWID) OF 'C' (TABLE)|       TABLE ACCESS (BY INDEX ROWID) OF 'B' (TABLE)|
