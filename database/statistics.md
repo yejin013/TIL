@@ -3,7 +3,7 @@
 ### 문제 발생 원인
 통계정보 유무에 따라 plan을 다르게 탐
 ex)
-|예시1|예시2|
+|유|무|
 |---|---|
 |SELECT STATE Optimizer=FIRST_ROWS|SELECT STATE Optimizer=FIRST_ROWS|
 | VIEW| VIEW|
