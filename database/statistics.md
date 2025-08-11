@@ -6,7 +6,7 @@ ex)
 |유|무|
 |---|---|
 |SELECT STATE Optimizer=FIRST_ROWS|SELECT STATE Optimizer=FIRST_ROWS|
-| VIEW| VIEW|
+ VIEW| VIEW|
 |   COUNT|   COUNT|
 |     NESTED LOOPS|     NESTED LOOPS|
 |       NESTED LOOPS|       NESTED LOOPS|
