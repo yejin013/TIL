@@ -49,22 +49,22 @@ WHERE condition;
 
 ### Index Scan 방식
 - /*+ FULL(\<Table\>) */ : 인덱스 타지말고 바로 테이블 풀스캔 유도
-- /*+ INDEX(<Index>) */ : 지정한 B-Tree 인덱스를 통해 테이블 액세스 유도
-- /*+ NO_INDEX(<Table> <Index>) */ : 해당 테이블에 특정 인덱스를 사용하지 않도록 옵티마이저 유도
-- /*+ INDEX_DESC(<Table> <Index>) */ : 인덱스를 ORDER BY DESC 역순 유도
-- /*+ INDEX_FFS(<Table> <Index>) */ : INDEX FAST FULL SCAN 유도
-- /*+ INDEX_SS(<Table> <Index>) */ : INDEX SKIP SCAN 유도
+- /*+ INDEX(\<Index\>) */ : 지정한 B-Tree 인덱스를 통해 테이블 액세스 유도
+- /*+ NO_INDEX(\<Table\> \<Index\>) */ : 해당 테이블에 특정 인덱스를 사용하지 않도록 옵티마이저 유도
+- /*+ INDEX_DESC(<Table> \<Index\>) */ : 인덱스를 ORDER BY DESC 역순 유도
+- /*+ INDEX_FFS(\<Table\> \<Index\>) */ : INDEX FAST FULL SCAN 유도
+- /*+ INDEX_SS(\<Table\> \<Index\>) */ : INDEX SKIP SCAN 유도
 
 ### Join 순서
 - /*+ ORDERED */ : FROM절에 나열된 순으로 Join
-- /*+ LEADING<Table1> <Table2>...) */ : 조인 순서를 힌트에 나열한 테이블 순서대로 사용
-- /*+ SWAP_JOIN_INPUTS(<Table>) */ : 해시 조인에서 해시 테이블(build)과 프로브 테이블을 뒤바꾸도록 지시. 입력을 교체해 작은 테이블을 Build, 큰 테이블을 Probe로 강제 (해시 조인 튜닝에 특화된 힌트)
+- /*+ LEADING\<Table1\> \<Table2\>...) */ : 조인 순서를 힌트에 나열한 테이블 순서대로 사용
+- /*+ SWAP_JOIN_INPUTS(\<Table\>) */ : 해시 조인에서 해시 테이블(build)과 프로브 테이블을 뒤바꾸도록 지시. 입력을 교체해 작은 테이블을 Build, 큰 테이블을 Probe로 강제 (해시 조인 튜닝에 특화된 힌트)
   - 잘못된 통계정보 때문에 옵티마이저가 큰 테이블을 Build로 선택해 성능이 나빠질 때.
   - 파티션 조인 등에서 Build/Probe 선택이 비효율적일 때.
   - 조인 순서를 힌트로 제어했지만, 여전히 Build/Probe 방향을 반대로 잡아야 효율적인 경우.
 
 ### Join 방식
-- /*+ USE_NL(<Table>) */ : NL(NESTED LOOP - 중첩루프)방식 조인 유도. 드라이빙 테이블의 결과를 기준으로 차테이블을 반복 탐색하는 방식으로, 보통 선행 결과셋이 작을 때 유리
+- /*+ USE_NL(\<Table\>) */ : NL(NESTED LOOP - 중첩루프)방식 조인 유도. 드라이빙 테이블의 결과를 기준으로 차테이블을 반복 탐색하는 방식으로, 보통 선행 결과셋이 작을 때 유리
   - 두 테이블 중 하나를 드라이빙(Driving, Outer) 테이블, 다른 하나를 드리븐(Driven, Inner) 테이블로 선택
   - 드라이빙 테이블의 행을 한 건씩 읽으면서, 매 건마다 드리븐 테이블 탐색
   - 소량 데이터 조회에 매우 빠름
@@ -75,17 +75,17 @@ WHERE condition;
         Find matching rows in Inner_Table (using index if possible)
      END LOOP
   ```
-- /*+ NO_USE_NL(<Table>) */ : NL Join이 아닌 방식 유도
-- /*+ USE_NL_WITH_INDEX(<Table> <Index>) */ : NL Join을 하면서 인덱스 사용
-- /*+ USE_MERGE(<Table>) */: SORT MERGE 조인으로 유도. 양쪽 데이터셋을 조인 키로 정렬한 후 병합하는 방식으로, 정렬 비용이 들지만 비등치 조인이나 두 테이블 모두 매우 큰 경우에 고려
+- /*+ NO_USE_NL(\<Table\>) */ : NL Join이 아닌 방식 유도
+- /*+ USE_NL_WITH_INDEX(\<Table\> \<Index\>) */ : NL Join을 하면서 인덱스 사용
+- /*+ USE_MERGE(\<Table\>) */: SORT MERGE 조인으로 유도. 양쪽 데이터셋을 조인 키로 정렬한 후 병합하는 방식으로, 정렬 비용이 들지만 비등치 조인이나 두 테이블 모두 매우 큰 경우에 고려
   - 두 입력 테이블을 조인 키 기준으로 각각 정렬한 뒤, 정렬된 상태에서 병합하면서 매칭
   - 입력이 이미 정렬되어 있거나 인덱스로 정렬 액세스하면 효율적
   - 비등치 조인 가능
-- /*+ USE_HASH(<Table> */: HASH 조인으로 유도
+- /*+ USE_HASH(\<Table\> */: HASH 조인으로 유도
   - 작은 테이블 (Build Input)을 메모리에 올려 해시 테이블 생성
   - 큰 테이블 (Probe Input)을 스캔하면서 해시 값을 계산해 Build Input의 해시 테이블과 매칭
   - 조인 키 기준 등치(=) 조건일 때만 사용 가능
-- /*+ NO_USE_HASH(<Table> */ : HASH 조인 아닌 방식 유도
+- /*+ NO_USE_HASH(\<Table\> */ : HASH 조인 아닌 방식 유도
 - /*+ NL_SJ */: NL SEMI조인으로 유도
 - /*+ MERGE_SJ */: 소트머지 세미조인으로 유도
 - /*+ HASH_SJ */: 해시 세미조인으로 유도
@@ -107,10 +107,10 @@ WHERE condition;
   - ex)WITH /*+ INLINE*/ T AS (SELECT ...)
 
 ### 병렬처리
-- /*+ PARALLEL(<Table> <병렬수>) */ : 병렬 수 만큼 병렬 처리 수행 지시
+- /*+ PARALLEL(\<Table\> \<병렬수\>) */ : 병렬 수 만큼 병렬 처리 수행 지시
   - ex) /*+ PARALLEL(T1 4)*/
-- /*+ NOPARALLEL(<Table> */ : 병렬처리 하지 않고 테이블 액세스 수행
-- /*+ PARALLEL_INDEX(<Index> <병렬수>) */ : 인덱스 스캔을 병렬방식으로 처리하도록 유도
+- /*+ NOPARALLEL(\<Table\> */ : 병렬처리 하지 않고 테이블 액세스 수행
+- /*+ PARALLEL_INDEX(\<Index\> \<병렬수\>) */ : 인덱스 스캔을 병렬방식으로 처리하도록 유도
 - /*+ PQ_DISTRIBUTE */: 병렬수행시 데이터 분배방식 결정
   - ex) PQ_DISTRIBUTE(T1 HASH(--BUILD INPUT) HASH(--PROBE TABLE))
  
