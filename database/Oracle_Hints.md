@@ -48,7 +48,7 @@ WHERE condition;
 - /*+ RULE */ : 규칙기반 옵티마이저를 이용 최적화
 
 ### Index Scan 방식
-- /*+ FULL(<Table>) */ : 인덱스 타지말고 바로 테이블 풀스캔 유도
+- /*+ FULL(\<Table\>) */ : 인덱스 타지말고 바로 테이블 풀스캔 유도
 - /*+ INDEX(<Index>) */ : 지정한 B-Tree 인덱스를 통해 테이블 액세스 유도
 - /*+ NO_INDEX(<Table> <Index>) */ : 해당 테이블에 특정 인덱스를 사용하지 않도록 옵티마이저 유도
 - /*+ INDEX_DESC(<Table> <Index>) */ : 인덱스를 ORDER BY DESC 역순 유도
