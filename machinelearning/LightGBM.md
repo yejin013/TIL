@@ -42,6 +42,7 @@
 <br/>
 <br/>
 출처
+
 - https://ko.wikipedia.org/wiki/LightGBM
 - https://databoom.tistory.com/entry/LightGBM%EC%84%A4%EB%AA%85
 - https://day-to-day.tistory.com/37
